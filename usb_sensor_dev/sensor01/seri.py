@@ -3,7 +3,7 @@
 import serial
 import time
 
-se = serial.Serial('COM3')
+se = serial.Serial('COM4')
 # TEMP = []
 # HUMI = []
 # PM2d5 = []
