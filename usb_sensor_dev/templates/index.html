@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content='text/html;charset="UTF-8"'>
+    <title>家居环境监测平台</title>
+    <script src="/static/echarts.js"></script>
+    <script src="/static/jquery-3.1.1.js"></script>
+</head>
+<body>
+<div id="main" style="width: 1000px;height:800px;"></div>
+
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+    option = {
+    tooltip : {
+        formatter: "{a} <br/>{c} {b}"
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            restore: {show: true},
+            saveAsImage: {show: true}
+        }
+    },
+    series : [
+        {
+            name: '甲醛',
+            type: 'gauge',
+            z: 3,
+            min: 0,
+            max: 0.1,
+            splitNumber: 10,
+            radius: '50%',
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 10
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length: 15,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length: 20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            title : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder',
+                    fontSize: 20,
+                    fontStyle: 'italic'
+                }
+            },
+            detail : {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 0.01, name: '甲醛'}]
+        },
+        {
+            name: 'TVOC',
+            type: 'gauge',
+            center: ['20%', '55%'],    // 默认全局居中
+            radius: '35%',
+            min:0,
+            max:1,
+            endAngle:45,
+            splitNumber:10,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                length:12,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+            splitLine: {           // 分隔线
+                length:20,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:5
+            },
+            title: {
+                offsetCenter: [0, '-30%'],       // x, y，单位px
+            },
+            detail: {
+                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                    fontWeight: 'bolder'
+                }
+            },
+            data:[{value: 0.2, name: 'TVOC'}]
+        },
+        {
+            name: '湿度',
+            type: 'gauge',
+            center: ['80%', '50%'],    // 圆心位置
+            radius: '40%',  //圆大小
+            min: 0,
+            max: 100,
+            startAngle: 135,  //右 0   上 90   左 180
+            endAngle: 45,
+            splitNumber: 5,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8,
+                    color:[[0.2,'#B34D4D'],[0.8,'#3CA9C4'],[1,'#B34D4D']]
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                splitNumber: 5,
+                length: 10,        // 属性length控制线长
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    color: 'auto'
+                }
+            },
+{#            axisLabel:{#}
+{#                formatter:function (v) {#}
+{#                    switch (v+''){#}
+{#                        case '40': return v+' 湿';#}
+{#                        case '60':return '度 '+v;#}
+{#                        default : return v;#}
+{#                    }#}
+{#                }#}
+{#            },#}
+{#            axisLabel: {#}
+{#                formatter:function(v){#}
+{#                    switch (v + '') {#}
+{#                        case '0' : return 'E';#}
+{#                        case '1' : return 'Gas';#}
+{#                        case '2' : return 'F';#}
+{#                    }#}
+{#                }#}
+{#            },#}
+            splitLine: {           // 分隔线
+                length: 15,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:2
+            },
+            title : {
+                show: true,
+                offsetCenter:[0,'-70%']
+            },
+            detail : {
+                show: false
+            },
+            data:[{value: 0.5, name: '湿度'}]
+        },
+        {
+            name: '温度',
+            type: 'gauge',
+            center : ['80%', '50%'],    // 默认全局居中
+            radius : '40%',
+            min: -20,
+            max: 40,
+            startAngle: 310,
+            endAngle: 225,
+            splitNumber: 6,
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8,
+                    color:[[0.42,'#B34D4D'],[0.88,'#3CA9C4'],[1,'#EE3D11']]
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                show: false
+            },
+            splitLine: {           // 分隔线
+                length: 15,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:2
+            },
+            title: {
+                show: true,
+                offsetCenter:[0,'70%'],
+            },
+            detail: {
+                show: false
+            },
+            data:[{value: 0.5, name: '温度'}]
+        },
+
+        //////////
+        {
+            name: 'PM2.5',
+            type: 'gauge',
+            center : ['80%', '50%'],    // 默认全局居中
+            radius : '40%',
+            min: 0,
+            max: 400,
+            startAngle: 40,
+            endAngle: -40,
+            splitNumber: 5,
+{#            color: ["#669999","#3CA9C4","#AECC33","#D56F2B","#EE3D11"],#}
+            axisLine: {            // 坐标轴线
+                lineStyle: {       // 属性lineStyle控制线条样式
+                    width: 8,
+                    color:[[0.2,'#669999'],[0.4,'#3CA9C4'],[0.6,'#AECC33'],[0.8,'#D56F2B'],[1,'#EE3D11']]
+                }
+            },
+            axisTick: {            // 坐标轴小标记
+                show: false
+            },
+            splitLine: {           // 分隔线
+                length: 15,         // 属性length控制线长
+                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                    color: 'auto'
+                }
+            },
+            pointer: {
+                width:2
+            },
+            title: {
+                show: true,
+                offsetCenter:['70%',0]
+            },
+            detail: {
+                show: false
+            },
+            data:[{value: 0.5, name: 'PM2.5'}]
+        }
+    ]
+};
+    setInterval(function () {
+       $.ajax({
+        type: 'GET',
+        url: 'http://127.0.0.1:8000/ses/readltime/',
+{#        cache: false,#}
+{#        async: true,#}
+{#        dataType:'jsonp',#}
+        success:function (arg) {
+            var rawdata = JSON.parse(arg);
+{#            console.log(rawdata["hcho"]);#}
+                    option.series[0].data[0].value = rawdata["hcho"];
+        option.series[1].data[0].value = rawdata["tvoc"];
+        option.series[2].data[0].value = rawdata["humi"];
+        option.series[3].data[0].value = rawdata["temp"];
+        option.series[4].data[0].value = rawdata["pm2d5"];
+        myChart.setOption(option,true);
+        }});},2000);
+
+
+
+</script>
+</body>
+</html>
