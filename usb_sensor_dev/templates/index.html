@@ -248,12 +248,18 @@
 {#        dataType:'jsonp',#}
         success:function (arg) {
             var rawdata = JSON.parse(arg);
+            console.log(rawdata);
+            if (rawdata["pm2d5"]===0 & rawdata["tvoc"] ===0){
+                setTimeout( function () {
+                    console.log("fffucckkk")
+                },5000);
+            };
 {#            console.log(rawdata["hcho"]);#}
-                    option.series[0].data[0].value = rawdata["hcho"];
-        option.series[1].data[0].value = rawdata["tvoc"];
-        option.series[2].data[0].value = rawdata["humi"];
-        option.series[3].data[0].value = rawdata["temp"];
-        option.series[4].data[0].value = rawdata["pm2d5"];
+            option.series[0].data[0].value = rawdata["hcho"];
+            option.series[1].data[0].value = rawdata["tvoc"];
+            option.series[2].data[0].value = rawdata["humi"];
+            option.series[3].data[0].value = rawdata["temp"];
+            option.series[4].data[0].value = rawdata["pm2d5"];
         myChart.setOption(option,true);
         }});},2000);
 

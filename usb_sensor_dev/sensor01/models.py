@@ -46,3 +46,9 @@ class dayData(models.Model):
     def __unicode__(self):
         return self.devId_name
 
+class rawDatas(models.Model):
+    PM25 = models.CharField(max_length=32)
+    TVOC = models.CharField(max_length=32)
+    HCOC = models.CharField(max_length=32)
+    TEMP = models.CharField(max_length=32)
+    WEIG = models.CharField(max_length=32)

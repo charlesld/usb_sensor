@@ -24,3 +24,26 @@ urlpatterns = [
     url(r'^index/', views.index),
 ]
 
+from apscheduler.schedulers.background import BackgroundScheduler
+from views import save_to_sql
+
+import logging
+
+log = logging.getLogger('apscheduler.executors.default')
+log.setLevel(logging.INFO)  # DEBUG
+
+fmt = logging.Formatter('%(levelname)s:%(name)s:%(message)s')
+h = logging.StreamHandler()
+h.setFormatter(fmt)
+log.addHandler(h)
+
+sched = BackgroundScheduler()
+
+
+@sched.scheduled_job("interval",seconds=60)
+def some_job():
+    save_to_sql()
+    print "data saved!!!!!!!!!"
+
+
+sched.start()
